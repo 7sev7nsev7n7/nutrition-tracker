@@ -1,3 +1,3 @@
 # Nutri Track
 
-subject to change
+Main repository for Nutrition Tracker project
