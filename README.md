@@ -1,3 +1,3 @@
 # Nutri Track
 
-Main repository for Nutrition Tracker project :)
+Main repository for Nutrition Tracker project
