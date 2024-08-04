@@ -11,7 +11,7 @@ from hashlib import md5
 def register(u,p):
     if (check(u) == 0): # check if username is available to register
         with open("auth","a") as auth:
-            auth.write(f"{u},{md5(p.encode()).hexdigest()},4\n")
+            auth.write(f"{u},{md5(p.encode()).hexdigest()},0\n") # users have 0 permissions by default
         return 1
     else:
         print("username is not available")
