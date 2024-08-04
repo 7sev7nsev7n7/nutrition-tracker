@@ -12,6 +12,7 @@ def register(u,p):
     if (check(u) == 0): # check if username is available to register
         with open("auth","a") as auth:
             auth.write(f"{u},{md5(p.encode()).hexdigest()},4\n")
+        return 1
     else:
         print("username is not available")
         return 0

@@ -8,7 +8,7 @@ from hashlib import md5
 
 # authenticate user using user and password
 # function returns true if successfully authed, false otherwise
-def Auth(u, p):
+def auth(u, p):
     if check(u): # first check whether user is in auth database
         uhash = check(u)[1] # extract user hash from auth database
         if (md5(p.encode()).hexdigest() == uhash): # compare hash for authentication

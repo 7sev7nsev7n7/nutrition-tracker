@@ -5,11 +5,19 @@ read/write operations of database and requests from the
 frontend applications via simple api
 '''
 
-import auth
+from auth import auth
+from register import register
+from usercheck import check
 
 usr = input("username: ")
-pw = input("password: ")
-if auth.Auth(usr, pw):
-    print(f"logged in successfully as {usr}")
+# register user if non-existant
+if check(usr) == 0: 
+    print("user is not registered, registering now")
+    if register(usr, input("please enter a new password: ")):
+        print("successfully registered")
+
+# once confirmed user exists, authenticate
+if auth(usr, input("please log in with your password: ")):
+    print("successfully logged in")
 else:
-    print("failed to authenticate")
+    print("failed to log in")
