@@ -9,15 +9,18 @@ from auth import auth
 from register import register
 from usercheck import check
 
-usr = input("username: ")
-# register user if non-existant
-if check(usr) == 0: 
-    print("user is not registered, registering now")
-    if register(usr, input("please enter a new password: ")):
-        print("successfully registered")
+def login(u, p):
+    # register user if non-existant
+    if check(u) == 0: 
+        print("user is not registered, registering now")
+        if register(u, input("please enter a new password: ")):
+            print("successfully registered")
+        else:
+            print("failed to register")
+            quit()
 
-# once confirmed user exists, authenticate
-if auth(usr, input("please log in with your password: ")):
-    print("successfully logged in")
-else:
-    print("failed to log in")
+    # once confirmed user exists, authenticate
+    if auth(password, input("please log in with your password: ")):
+        return 1 
+    else:
+        return 0
