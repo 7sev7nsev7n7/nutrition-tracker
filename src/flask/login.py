@@ -1,4 +1,4 @@
-# main.py
+# login.py
 '''
 main module to run, which incorporates user authentication,
 read/write operations of database and requests from the
