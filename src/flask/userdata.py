@@ -55,6 +55,8 @@ def delData(username): # deletes user data. important to only use this function 
         print("failed to remove user data")
         return 0
 
+'''
 def updateData(username,**fields):
     cdata = readData(username).split(','); cdata[-1] = cdata[-1].replace('\n','') # remove newline char from last entry
     print(cdata)
+'''

@@ -9,7 +9,7 @@ from login import login
 from register import register, unregister
 from auth import auth
 from usercheck import check
-from userdata import readData, updateData
+from userdata import readData
 import json
 import os
 
@@ -65,7 +65,6 @@ def postDelete():
         username = request.form['username']
         password = request.form['password']
         cu = request.cookies.get('username')
-        print(username,password)
         if  username != cu:
             print("logged username does not coincide with delete request, failed to unregister")
             return redirect('home')
