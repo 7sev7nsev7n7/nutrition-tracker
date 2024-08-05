@@ -10,17 +10,8 @@ from register import register
 from usercheck import check
 
 def login(u, p):
-    # register user if non-existant
-    if check(u) == 0: 
-        print("user is not registered, registering now")
-        if register(u, input("please enter a new password: ")):
-            print("successfully registered")
-        else:
-            print("failed to register")
-            quit()
-
     # once confirmed user exists, authenticate
-    if auth(password, input("please log in with your password: ")):
-        return 1 
+    if auth(u, p):
+        return u # return username if successfully registered, for use in scripts
     else:
         return 0
