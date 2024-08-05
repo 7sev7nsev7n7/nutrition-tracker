@@ -52,7 +52,7 @@ def home():
     cu = request.cookies.get('username')
     cp = (request.cookies.get('password'))
     if auth(cu, cp): # on-page authentication to ensure correct logins, and to not expose user information
-        return render_template("home.html", username = cu, password = cp, userdata = readData(cu))
+        return render_template("home.html", username = cu, password = cp, data = readData(cu).split(','))
     else:
         return redirect('/')
 
