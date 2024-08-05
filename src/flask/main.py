@@ -64,6 +64,11 @@ def postDelete():
     if request.method == 'POST':
         username = request.form['username']
         password = request.form['password']
+        cu = request.cookies.get('username')
+        print(username,password)
+        if  username != cu:
+            print("logged username does not coincide with delete request, failed to unregister")
+            return redirect('home')
         if unregister(username, password):
             print("account deletion success")
             return redirect('/')
