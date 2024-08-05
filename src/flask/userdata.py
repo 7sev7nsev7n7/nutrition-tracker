@@ -7,6 +7,7 @@ module must be called on user registry
 '''
 from auth import auth
 from usercheck import check
+import json
 filepath = "./data/userdata"
 
 # all operations are specific to a single user, so username must be passed as an argument
@@ -55,8 +56,29 @@ def delData(username): # deletes user data. important to only use this function 
         print("failed to remove user data")
         return 0
 
-'''
-def updateData(username,**fields):
-    cdata = readData(username).split(','); cdata[-1] = cdata[-1].replace('\n','') # remove newline char from last entry
-    print(cdata)
-'''
+def updateData(username,**kwargs):
+    userdata = json.loads(readData(username)) # load json file, can be read as dictionary to modify contents
+    if all(key in userdata for key in kwargs):
+        original = f"{username}:{str(userdata).replace('\'','\"')}\n"
+        for key in kwargs: #  for every key in kwargs, update said key for user
+            if key in kwargs:
+                if kwargs[key] != '':
+                    print(f"changing user '{username}' key '{key}' from '{userdata[key]}' to '{kwargs[key]}'")
+                    userdata[key]=kwargs[key]
+                else:
+                    print(f"skipping key '{key}' since its value is empty")
+        userdata = f"{username}:{str(userdata).replace('\'','\"')}\n"
+        newdata = open(filepath,'r').readlines()
+        for entry in newdata:
+            if entry == original:
+                newdata.remove(original)
+                newdata.append(userdata)
+        with open(filepath,'w') as file:
+            file.write('')
+            for entry in newdata:
+                file.write(str(entry))
+        print(f"successfully updated {kwargs} for user {username}")
+        return 1
+    else:
+        print(f"failed to update keys for user {username}")
+        return 0

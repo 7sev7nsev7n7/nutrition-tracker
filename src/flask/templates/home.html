@@ -11,6 +11,20 @@
 		{% for item in data %}
 		<p>{{item}}: {{data[item]}}</p>
 		{% endfor %}
+		<h2>Update information</h2>
+		<form action="/updateinfo" method="post">
+			<label for="sex">Sex:</label>
+			<input type="text" id="sex" name="sex"><br>
+			<label for="height">Height:</label>
+			<input type="text" id="height" name="height" ><br>
+			<label for="weight">Weight:</label>
+			<input type="text" id="weight" name="weight" ><br>
+			<label for="timezone">Timezone:</label>
+			<input type="text" id="timezone" name="timezone" ><br>
+			<br><label for="password">Password:</label>
+			<input type="text" id="password" name="password" ><br>
+			<input type="submit" value="Update information">
+		</form>
 	</body>
 	<a href="/">Login page</a><br>
 	<a href="/deleteaccount">Delete account</a>

@@ -8,7 +8,7 @@ from flask import Flask, render_template, request, redirect, make_response
 from register import register, unregister
 from auth import auth
 from usercheck import check
-from userdata import readData
+from userdata import readData, updateData
 import json
 import os
 
@@ -66,7 +66,7 @@ def postDelete():
         cu = request.cookies.get('username')
         if  username != cu:
             print("logged username does not coincide with delete request, failed to unregister")
-            return redirect('home')
+            return redirect('/home')
         if unregister(username, password):
             print("account deletion success")
             return redirect('/')
@@ -87,8 +87,14 @@ def home():
 @app.route("/updateinfo", methods=['POST'])
 def updateinfo():
     if request.method ==  'POST':
-        pass
-
+        sex = request.form['sex']
+        height = request.form['height']
+        weight = request.form['weight']
+        timezone = request.form['timezone']
+        password = request.form['password']
+        if auth(request.cookies.get('username'),password):
+            updateData(request.cookies.get('username'),sex=sex,height=height,weight=weight,timezone=timezone)
+    return redirect('/home')
 
 if __name__ == "__main__":
     app.run(debug=True)
