@@ -11,9 +11,7 @@ def getUsers():
     except FileNotFoundError:
         print("auth file not found!")
         print("creating dummy file")
-        file = open(filepath,"w")
-        file.write("0,0,0\n")
-
+        file = open(filepath,"a")
 
     with open(filepath,'r') as file:
         for line in file:

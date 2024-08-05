@@ -24,12 +24,16 @@ def register(u,p):
 
 def unregister(username,password):
     if auth(username,password): # authenticate user once more
-        if (check(username) != 0): # if user is found in auth file
+        udata = str(check(username)).replace(' ','').replace('\'','')[1:-1]
+        if udata: # if user is found in auth file
             newdata = open(filepath,'r').readlines()
             for entry in newdata:
-                if username in entry:
+                if udata == entry.replace('\n',''): # remove newline to match to user data
+                    print("found entry")
                     newdata.remove(entry)
                     break
+                print("failed to unregister user")
+                return 0
             with open(filepath,'w') as file:
                 file.write('')
                 for entry in newdata:

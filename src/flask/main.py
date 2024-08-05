@@ -6,7 +6,7 @@ main program to run and execute flask site
 
 from flask import Flask, render_template, request, redirect, make_response
 from login import login
-from register import register
+from register import register, unregister
 from auth import auth
 from usercheck import check
 from userdata import readData, updateData
@@ -55,13 +55,28 @@ def postRegister():
             return redirect('/register')
     pass
 
+@app.route('/deleteaccount', methods=['GET']) # account deletion page
+def userDelete():
+    return render_template("delete.html")
+
+@app.route('/postdeleteaccount', methods=['POST']) # account deletion http post
+def postDelete():
+    if request.method == 'POST':
+        username = request.form['username']
+        password = request.form['password']
+        if unregister(username, password):
+            print("account deletion success")
+            return redirect('/')
+        else:
+            return redirect('/home')
+    pass
+
 @app.route("/home") # user home page
 def home():
     cu = request.cookies.get('username') # cookie username
     cp = (request.cookies.get('password')) # cookie password
     if auth(cu, cp): # on-page authentication to ensure correct logins, and to not expose user information
         data = json.loads(readData(cu))
-        print(data)
         return render_template("home.html", username = cu, password = cp, data = data)
     else:
         return redirect('/')

@@ -3,18 +3,19 @@
 	<head>
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width-device-width, initial-scale=1.0">
-		<title>Registration</title>
+		<title>Account deletion</title>
 		<link rel="stylesheet" href="style.css">
 	</head>
 	<body>
 		<h1>Registration</h1>
-		<form action="/postregister" method="post">
+		<p>To delete your account, please enter your username and password</p>
+		<form action="/postdeleteaccount" method="post">
 			<label for="username">Username:</label>
 			<input type="text" id="username:" name="username" required><br>
 			<label for="password">Password:</label>
 			<input type="text" id="password" name="password" required><br>
 			<input type="submit" value="Register account">
 		</form>
-		<a href="/">Cancel</a>
+		<a href="/home">Cancel</a>
 	</body>
 </html>

@@ -10,15 +10,19 @@ from usercheck import check
 filepath = "./data/userdata"
 
 # all operations are specific to a single user, so username must be passed as an argument
-def readData(username): # returns json data
+def readData(username,json=True): # returns json data
     try:
         with open(filepath,'r') as file:
             for entry in file:
                 if entry.split(':')[0] == username:
-                    return entry.replace(f"{username}:",'').replace('\n','') # remove username from data list
+                    if json==True:
+                        return entry.replace(f"{username}:",'').replace('\n','') # remove username from data list
+                    else:
+                        return entry
         return 0
     except FileNotFoundError:
         print("file not found, creating empty database")
+        open(filepath,'a')
         return 0
 
 
@@ -37,7 +41,7 @@ def writeData(username, **kwargs): # arguments to write, other than username all
 
 def delData(username): # deletes user data. important to only use this function when deleting user login entry.
     newdata = open(filepath,'r').readlines()
-    userdata = f'{readData(username)}'
+    userdata = f'{readData(username,json=False)}'
     if userdata in newdata:
         newdata.remove(userdata)
         with open(filepath,'w') as file:
