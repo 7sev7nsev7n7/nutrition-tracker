@@ -5,16 +5,17 @@ useful for registering, authentication and checking permissions
 '''
 users = []
 def getUsers():
+    filepath = "./data/auth"
     try:
-        file = open("auth","r")
+        file = open(filepath,"r")
     except FileNotFoundError:
         print("auth file not found!")
         print("creating dummy file")
-        file = open("auth","w")
+        file = open(filepath,"w")
         file.write("0,0,0\n")
 
 
-    with open("auth",'r') as file:
+    with open(filepath,'r') as file:
         for line in file:
             user = line.split(',')
             user[-1] = user[-1].replace('\n','')
