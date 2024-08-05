@@ -5,7 +5,6 @@ main program to run and execute flask site
 '''
 
 from flask import Flask, render_template, request, redirect, make_response
-from login import login
 from register import register, unregister
 from auth import auth
 from usercheck import check
@@ -30,7 +29,7 @@ def userLogin():
         username = request.form['username']
         password = request.form['password']
 
-        if login(username, password):
+        if auth(username,password):
             print(f"login success for user {username}")
             resp = make_response(redirect('/home'))
             resp.set_cookie('username',value=username, secure=True)
