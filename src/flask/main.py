@@ -10,6 +10,7 @@ from register import register
 from auth import auth
 from usercheck import check
 from userdata import readData, updateData
+import json
 app = Flask(__name__,static_url_path='')
 
 @app.route("/", methods=['GET']) # main page
@@ -49,22 +50,20 @@ def postRegister():
 
 @app.route("/home") # user home page
 def home():
-    cu = request.cookies.get('username')
-    cp = (request.cookies.get('password'))
+    cu = request.cookies.get('username') # cookie username
+    cp = (request.cookies.get('password')) # cookie password
     if auth(cu, cp): # on-page authentication to ensure correct logins, and to not expose user information
-        return render_template("home.html", username = cu, password = cp, data = readData(cu).split(','))
+        data = json.loads(readData(cu))
+        print(data)
+        return render_template("home.html", username = cu, password = cp, data = data)
     else:
         return redirect('/')
 
 @app.route("/updateinfo", methods=['POST'])
 def updateinfo():
     if request.method ==  'POST':
-        height = request.form['height']
-        weight = request.form['weight']
-        sex = request.form['sex']
-        if auth(cu, cp): # on-page authentication to ensure correct logins
-            updateData(cu, height=height, weight=weight, sex=sex)
-            pass
+        pass
+
 
 if __name__ == "__main__":
     app.run()

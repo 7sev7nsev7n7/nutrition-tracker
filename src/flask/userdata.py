@@ -7,7 +7,6 @@ module must be called on user registry
 '''
 from auth import auth
 from usercheck import check
-import json
 filepath = "./data/userdata"
 
 # all operations are specific to a single user, so username must be passed as an argument
@@ -16,7 +15,7 @@ def readData(username): # returns json data
         with open(filepath,'r') as file:
             for entry in file:
                 if entry.split(':')[0] == username:
-                    return entry
+                    return entry.replace(f"{username}:",'').replace('\n','') # remove username from data list
         return 0
     except FileNotFoundError:
         print("file not found, creating empty database")
@@ -26,6 +25,7 @@ def readData(username): # returns json data
 def writeData(username, **kwargs): # arguments to write, other than username all else are optional
     # python dictionary with all entries
     data = f"{username}:{kwargs}" # username separated by : to make delimiting easier
+    data = data.replace('\'','"')
     if readData(username) == 0: # if user is found in userdata file
         with open(filepath,'a') as file:
             file.write(str(data));file.write('\n') # write newline to keep every user entry on single line

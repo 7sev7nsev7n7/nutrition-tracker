@@ -8,8 +8,8 @@
 	</head>
 	<body>
 		<h1>User page for {{username}}</h1>
-		<p>user height: {{data[1]}}</p>
-		<p>user weight: {{data[2]}}</p>
-		<p>user sex: {{data[3]}}</p>
+		{% for item in data %}
+		<p>{{item}}: {{data[item]}}</p>
+		{% endfor %}
 	</body>
 </html>
