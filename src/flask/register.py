@@ -11,11 +11,11 @@ from auth import auth
 filepath="./data/auth"
 
 # registers user if avaliable. returns true upon success, false upon failure
-def register(u,p):
-    if (check(u) == 0): # check if username is available to register
+def register(username,password):
+    if (check(username) == 0): # check if username is available to register
         with open(filepath,"a") as auth:
-            auth.write(f"{u},{md5(p.encode()).hexdigest()},0\n") # users have 0 permissions by default
-            writeData(u,
+            auth.write(f"{username},{md5(password.encode()).hexdigest()},0\n") # users have 0 permissions by default
+            writeData(username,
                       sex="", 
                       height="", 
                       weight="", 
@@ -24,10 +24,10 @@ def register(u,p):
                       o2="", 
                       heartrate="",
                       bloodpressure="")
-            print(f"added userdata entry for {u}")
+            print(f"added userdata entry for {username}")
         return 1
     else:
-        print("username is not available")
+        print(f"failed to log user {username}")
         return 0
 
 def unregister(username,password):
