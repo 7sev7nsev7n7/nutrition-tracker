@@ -87,13 +87,11 @@ def home():
 @app.route("/updateinfo", methods=['POST'])
 def updateinfo():
     if request.method ==  'POST':
-        sex = request.form['sex']
-        height = request.form['height']
-        weight = request.form['weight']
-        timezone = request.form['timezone']
+        data = json.loads(readData(request.cookies.get('username')))
+        new = {}; [new.update({entry: request.form[str(entry)]}) for entry in data] # create new dict to pass as kwargs for updateData function
         password = request.form['password']
         if auth(request.cookies.get('username'),password):
-            updateData(request.cookies.get('username'),sex=sex,height=height,weight=weight,timezone=timezone)
+            updateData(request.cookies.get('username'),**new)
     return redirect('/home')
 
 if __name__ == "__main__":
