@@ -9,6 +9,7 @@ from login import login
 from register import register
 from auth import auth
 from usercheck import check
+from userdata import readData
 app = Flask(__name__,static_url_path='')
 
 @app.route("/", methods=['GET']) # main page
@@ -51,7 +52,7 @@ def home():
     cu = request.cookies.get('username')
     cp = (request.cookies.get('password'))
     if auth(cu, cp): # on-page authentication to ensure correct logins, and to not expose user information
-        return render_template("home.html", username = cu, password = cp)
+        return render_template("home.html", username = cu, password = cp, userdata = readData(cu))
     else:
         return redirect('/')
 
