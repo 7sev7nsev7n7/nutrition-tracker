@@ -1,5 +1,6 @@
 body {
 	font-family: "Comic Sans MS";
 	color: white;
-	background-image: url('background.webp');
+	/* background-image: url('background.webp'); */
+	background-color: grey;
 }
