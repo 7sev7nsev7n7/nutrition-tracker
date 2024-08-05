@@ -2,7 +2,7 @@
 '''
 module to register new users
 important to check whether user exists prior
-default permissions are readonly
+default permissions are none
 '''
 from usercheck import check
 from hashlib import md5

@@ -1,12 +1,9 @@
 # login.py
 '''
-main module to run, which incorporates user authentication,
-read/write operations of database and requests from the
-frontend applications via simple api
+login user based on authentication and user existence
 '''
 
 from auth import auth
-from register import register
 from usercheck import check
 
 def login(u, p):

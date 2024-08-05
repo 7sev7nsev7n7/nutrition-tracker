@@ -11,6 +11,13 @@ from auth import auth
 from usercheck import check
 from userdata import readData, updateData
 import json
+import os
+
+try:
+    os.mkdir("data") # make data directory if it does not already exist
+except FileExistsError:
+    pass
+    
 app = Flask(__name__,static_url_path='')
 
 @app.route("/", methods=['GET']) # main page

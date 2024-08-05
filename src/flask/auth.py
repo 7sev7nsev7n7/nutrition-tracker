@@ -1,7 +1,7 @@
 # auth.py
 '''
-this module handles access to the user auth, updating and modifying
-entries when necessary. also handles permissions
+this module authenticates a user against existing entries in auth database
+md5 hashes are used to authenticate, to avoid storing plaintext passwords
 '''
 from usercheck import check
 from hashlib import md5
