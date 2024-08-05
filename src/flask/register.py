@@ -19,11 +19,7 @@ def register(username,password):
                       sex="", 
                       height="", 
                       weight="", 
-                      timezone="", 
-                      glucose="", 
-                      o2="", 
-                      heartrate="",
-                      bloodpressure="")
+                      timezone="") 
             print(f"added userdata entry for {username}")
         return 1
     else:
