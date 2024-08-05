@@ -89,6 +89,12 @@ def updateinfo():
     if request.method ==  'POST':
         data = json.loads(readData(request.cookies.get('username')))
         new = {}; [new.update({entry: request.form[str(entry)]}) for entry in data] # create new dict to pass as kwargs for updateData function
+        
+        newentryname = request.form['newentryname']
+        newentrydata = request.form['newentrydata']
+        if newentryname!='':
+            new.update({newentryname: newentrydata})
+
         password = request.form['password']
         if auth(request.cookies.get('username'),password):
             updateData(request.cookies.get('username'),**new)
