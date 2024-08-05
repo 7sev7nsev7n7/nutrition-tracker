@@ -31,7 +31,7 @@ def userLogin():
         password = request.form['password']
 
         if login(username, password):
-            print("login success")
+            print(f"login success for user {username}")
             resp = make_response(redirect('/home'))
             resp.set_cookie('username',value=username, secure=True)
             resp.set_cookie('password',value=password, secure=True)

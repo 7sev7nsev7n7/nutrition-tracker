@@ -39,7 +39,7 @@ def unregister(username,password):
                 for entry in newdata:
                     file.write(str(entry))
             delData(username)
-            print(f"succsessfully unregistered {username}")
+            print(f"succsessfully unregistered user {username}")
         return 1
     else:
         print(f"failed to delete user entry for {username}")

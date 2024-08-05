@@ -49,7 +49,7 @@ def delData(username): # deletes user data. important to only use this function 
             for entry in newdata:
                 file.write(str(entry))
 
-        print("successfully deleted user data")
+        print(f"successfully deleted data for user {username}")
         return 1
     else:
         print("failed to remove user data")
