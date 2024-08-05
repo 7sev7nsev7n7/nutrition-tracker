@@ -15,7 +15,7 @@ def register(u,p):
     if (check(u) == 0): # check if username is available to register
         with open(filepath,"a") as auth:
             auth.write(f"{u},{md5(p.encode()).hexdigest()},0\n") # users have 0 permissions by default
-            writeData(u)
+            writeData(u,sex=None, height=None, weight=None)
             print(f"added userdata entry for {u}")
         return 1
     else:

@@ -9,7 +9,7 @@ from login import login
 from register import register
 from auth import auth
 from usercheck import check
-from userdata import readData
+from userdata import readData, updateData
 app = Flask(__name__,static_url_path='')
 
 @app.route("/", methods=['GET']) # main page
@@ -41,7 +41,7 @@ def postRegister():
         username = request.form['username']
         password = request.form['password']
         if register(username, password):
-            print("registration succes")
+            print("registration success")
             return redirect('/')
         else:
             return redirect('/register')
@@ -55,6 +55,16 @@ def home():
         return render_template("home.html", username = cu, password = cp, data = readData(cu).split(','))
     else:
         return redirect('/')
+
+@app.route("/updateinfo", methods=['POST'])
+def updateinfo():
+    if request.method ==  'POST':
+        height = request.form['height']
+        weight = request.form['weight']
+        sex = request.form['sex']
+        if auth(cu, cp): # on-page authentication to ensure correct logins
+            updateData(cu, height=height, weight=weight, sex=sex)
+            pass
 
 if __name__ == "__main__":
     app.run()

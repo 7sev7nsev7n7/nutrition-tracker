@@ -15,20 +15,17 @@ def readData(username): # returns json data
     try:
         with open(filepath,'r') as file:
             for entry in file:
-                if entry.split(',')[0] == username:
+                if entry.split(':')[0] == username:
                     return entry
         return 0
     except FileNotFoundError:
-        print("file not found, creating emtpy database")
+        print("file not found, creating empty database")
         return 0
 
 
-def writeData(username,  # arguments to write, other than username all else are optional
-              height=None,
-              weight=None, 
-              sex=None):
+def writeData(username, **kwargs): # arguments to write, other than username all else are optional
     # python dictionary with all entries
-    data = f"{username},{height},{weight},{sex}"
+    data = f"{username}:{kwargs}" # username separated by : to make delimiting easier
     if readData(username) == 0: # if user is found in userdata file
         with open(filepath,'a') as file:
             file.write(str(data));file.write('\n') # write newline to keep every user entry on single line
@@ -53,3 +50,7 @@ def delData(username): # deletes user data. important to only use this function 
     else:
         print("failed to remove user data")
         return 0
+
+def updateData(username,**fields):
+    cdata = readData(username).split(','); cdata[-1] = cdata[-1].replace('\n','') # remove newline char from last entry
+    print(cdata)

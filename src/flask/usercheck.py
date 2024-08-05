@@ -3,8 +3,8 @@
 module to check whether user is in auth database or not
 useful for registering, authentication and checking permissions
 '''
-users = []
 def getUsers():
+    users=[]
     filepath = "./data/auth"
     try:
         file = open(filepath,"r")
@@ -20,10 +20,11 @@ def getUsers():
             user = line.split(',')
             user[-1] = user[-1].replace('\n','')
             users.append(user)
+    return users
 
 # check if user exists in auth database, returns user object if true, else false
 def check(usr):
-    getUsers()
+    users = getUsers()
     if usr in [user[0] for user in users]:
         uid = [user[0] for user in users].index(usr)
         return users[uid]
