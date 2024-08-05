@@ -29,17 +29,14 @@ def unregister(username,password):
             newdata = open(filepath,'r').readlines()
             for entry in newdata:
                 if udata == entry.replace('\n',''): # remove newline to match to user data
-                    print("found entry")
                     newdata.remove(entry)
                     break
-                print("failed to unregister user")
-                return 0
-            with open(filepath,'w') as file:
-                file.write('')
-                for entry in newdata:
-                    file.write(str(entry))
-            delData(username)
-            print(f"succsessfully unregistered user {username}")
+        with open(filepath,'w') as file:
+            file.write('')
+            for entry in newdata:
+                file.write(str(entry))
+        delData(username)
+        print(f"succsessfully unregistered user {username}")
         return 1
     else:
         print(f"failed to delete user entry for {username}")
