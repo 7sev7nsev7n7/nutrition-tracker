@@ -31,7 +31,7 @@ def writeData(username, **kwargs): # arguments to write, other than username all
     # python dictionary with all entries
     data = f"{username}:{kwargs}" # username separated by : to make delimiting easier
     data = data.replace('\'','"')
-    if readData(username) == 0: # if user is found in userdata file
+    if readData(username) == 0: # if user is not found in userdata file
         with open(filepath,'a') as file:
             file.write(str(data));file.write('\n') # write newline to keep every user entry on single line
         print(f"successfully wrote data for {username}")
@@ -67,7 +67,7 @@ def updateData(username,**kwargs):
             else:
                 print(f"skipping key '{key}' since its value is empty")
         else:
-            print("adding new key {key}")
+            print(f"adding new key {key}")
             userdata.update({key: kwargs[key]})
     userdata = f"{username}:{str(userdata).replace('\'','\"')}\n"
     newdata = open(filepath,'r').readlines()
