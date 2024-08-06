@@ -7,14 +7,19 @@ div {
 
 .maintext {
 	font-family: "Comic Sans MS";
-	width: 300px;
+	font-size: 24px;
+
+	width: 20%;
 	border: 15px solid rgba(200,200,200,0.3);
 	border-radius: 20px;
+
 	background-color: rgba(50,100,50,0.5);
+
 	text-align: center;
 	display: grid;
 	margin: auto;
 }
+
 p {
 	font-weight: bold;
 	color: black;
