@@ -1,6 +1,42 @@
-body {
-	font-family: "Comic Sans MS";
-	color: white;
-	/* background-image: url('background.webp'); */
-	background-color: grey;
+html {
+	background-image: url('background-tiling.jpg');
+}
+
+div {
+}
+
+.maintext {
+	font-family: Arial;
+	width: 300px;
+	border: 15px solid rgba(200,200,200,0.3);
+	border-radius: 20px;
+	background-color: rgba(50,100,50,0.5);
+	text-align: center;
+	display: grid;
+	margin: auto;
+}
+p {
+	font-weight: bold;
+	color: black;
+	text-align: center;
+	text-shadow: 2px 2px #aaaaaa;
+
+	width: 300px;
+	/* background-color: grey; */
+}
+
+h1 {
+	font-family: Arial;
+	font-weight: bold;
+	color: green;
+}
+
+form {
+	font-family: Arial;
+	font-weight: italic;
+	color: #ccffcc;
+}
+
+a {
+	color: #005500;
 }
