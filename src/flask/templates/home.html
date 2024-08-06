@@ -16,13 +16,13 @@
 			<form action="/updateinfo" method="post">
 				{% for key in data %}
 				<label for="{{key}}">{{key}}:</label>
-				<input type="text" id="{{key}}" name="{{key}}"><br>
+				<input type="text" id="{{key}}" name="{{key}}" placeholder={{data[key]}}><br>
 				{% endfor %}
 				<br><label for="newentry">new entry: </label>
-				<input type="text" id="newentryname" name="newentryname">
-				<input type="text" id="newentrydata" name="newentrydata"><br>
+				<input type="text" id="newentryname" name="newentryname" placeholder="entry name">
+				<input type="text" id="newentrydata" name="newentrydata" placeholder="entry value (optional)"><br>
 				<br><label for="password">password: </label>
-				<input type="text" id="password" name="password" required><br>
+				<input type="password" id="password" name="password" placeholder="password" required><br>
 				<input type="submit" value="Update information">
 			</form>
 		</body>

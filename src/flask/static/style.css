@@ -40,3 +40,8 @@ form {
 a {
 	color: #005500;
 }
+
+input:focus {
+	background-color: grey;
+	font-family: Arial;
+}
