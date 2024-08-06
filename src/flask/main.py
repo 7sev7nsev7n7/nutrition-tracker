@@ -32,8 +32,8 @@ def userLogin():
         if auth(username,password):
             print(f"login success for user {username}")
             resp = make_response(redirect('/home'))
-            resp.set_cookie('username',value=username, secure=True)
-            resp.set_cookie('password',value=password, secure=True)
+            resp.set_cookie('username',value=username)
+            resp.set_cookie('password',value=password)
             return resp
         else:
             return redirect('/')
@@ -101,4 +101,4 @@ def updateinfo():
     return redirect('/home')
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(debug=True, host='0.0.0.0')
