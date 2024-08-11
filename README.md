@@ -6,6 +6,9 @@ This project is based on the Flask framework, which utilizes a webpage to allow 
 # WIP, features are subject to change/addition/deletion
 title
 
+# Short demo
+<video src="/media/demo.mp4"/>
+
 ## Team :)
 - sev7nsev7n7
 - Patchesse
