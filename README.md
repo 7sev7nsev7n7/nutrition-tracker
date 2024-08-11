@@ -7,7 +7,7 @@ This project is based on the Flask framework, which utilizes a webpage to allow 
 title
 
 # Short demo
-<video src="/media/demo.mp4" width=540/>
+<video src='/media/demo.mp4' width=540/>
 
 ## Team :)
 - sev7nsev7n7
