@@ -7,7 +7,7 @@ This project is based on the Flask framework, which utilizes a webpage to allow 
 title
 
 # Short demo
-<video src="https://raw.githubusercontent.com/sev7nsev7n7/nutrition-tracker/main/media/demo.mp4" autoplay loop></video>
+https://github.com/user-attachments/assets/8ffacde4-91bc-4c5e-8820-d975b1591133
 
 ## Team :)
 - sev7nsev7n7
